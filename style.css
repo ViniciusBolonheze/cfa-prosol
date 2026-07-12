@@ -1,0 +1,33 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#d9d9d9;display:flex;justify-content:center;padding:25px}
+.pagina{width:210mm;min-height:297mm;background:#fff;padding:18mm;display:flex;flex-direction:column;box-shadow:0 0 18px rgba(0,0,0,.18)}
+.topo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:8px}
+.logo-area{justify-self:start}
+.logo{width:138px}
+.foto-area{justify-self:center}
+.foto{width:125px;aspect-ratio:2/3;object-fit:cover;border:1px solid #bbb;border-radius:8px}
+.linha-superior{height:2px;background:#7d0f17;margin:6px 0 14px}
+.identificacao{text-align:center;margin-bottom:12px}
+.nome{font-size:23px;font-weight:700;color:#000}
+.posicao{margin-top:6px;font-size:16px;color:#000}
+.nascimento{margin-top:4px;font-size:15px;color:#000}
+.clube{margin-top:10px;font-size:14px;font-weight:600;color:#000}
+.medidas{margin-top:8px}
+.titulo{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+.titulo span,.linha-rodape{height:2px;background:#7d0f17}
+.titulo h2{font-size:18px;color:#7d0f17}
+.data-av{text-align:center;margin:16px 0 22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.linha{display:grid;grid-template-columns:155px 1fr;padding:8px 0}
+.rotulo{font-weight:700}
+.predita{text-align:center;margin-top:20px;color:#000}
+footer{margin-top:auto;text-align:center}
+.linha-rodape{margin:18px 0}
+footer p{
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+font-weight:700;
+line-height:23px;
+letter-spacing:.2px;
+}
+@media print{body{background:#fff;padding:0}.pagina{box-shadow:none}}
