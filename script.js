@@ -69,11 +69,12 @@ async function compartilharPDF(){
  if(btn) btn.style.display='none';
  const nome=(document.getElementById('nome')?.textContent||'Atleta').trim();
  const opt={
-   margin:0.3,
+   margin:[0,0,0,0],
    filename:`Ficha CFA Prosol - ${nome}.pdf`,
-   image:{type:'jpeg',quality:0.98},
-   html2canvas:{scale:2,useCORS:true},
-   jsPDF:{unit:'in',format:'a4',orientation:'portrait'}
+   image:{type:'jpeg',quality:1},
+   html2canvas:{scale:4,useCORS:true,allowTaint:false,backgroundColor:'#ffffff',scrollY:0},
+   pagebreak:{mode:['avoid-all','css']},
+   jsPDF:{unit:'mm',format:'a4',orientation:'portrait',compress:true}
  };
  try{
    const worker=html2pdf().set(opt).from(document.querySelector('.pagina'));
