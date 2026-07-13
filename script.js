@@ -63,3 +63,32 @@ if (foto) {
     img.src = new URL(foto).href;
 
 }
+
+async function compartilharPDF(){
+ const btn=document.getElementById('btnCompartilharPDF');
+ if(btn) btn.style.display='none';
+ const nome=(document.getElementById('nome')?.textContent||'Atleta').trim();
+ const opt={
+   margin:0.3,
+   filename:`Ficha CFA Prosol - ${nome}.pdf`,
+   image:{type:'jpeg',quality:0.98},
+   html2canvas:{scale:2,useCORS:true},
+   jsPDF:{unit:'in',format:'a4',orientation:'portrait'}
+ };
+ try{
+   const worker=html2pdf().set(opt).from(document.querySelector('.pagina'));
+   const pdfBlob=await worker.outputPdf('blob');
+   const file=new File([pdfBlob],`Ficha CFA Prosol - ${nome}.pdf`,{type:'application/pdf'});
+   if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:'Ficha CFA Prosol'});
+   }else{
+      html2pdf().set(opt).from(document.querySelector('.pagina')).save();
+   }
+ }catch(e){
+   console.error(e);
+   html2pdf().set(opt).from(document.querySelector('.pagina')).save();
+ }finally{
+   if(btn) btn.style.display='';
+ }
+}
+document.getElementById('btnCompartilharPDF')?.addEventListener('click',compartilharPDF);
